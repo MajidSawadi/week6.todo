@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 const Header = () => {
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => setText(e.target.value);
 
@@ -10,7 +11,8 @@ const Header = () => {
     // If the user pressed the Enter key:
     const trimmedText = text.trim();
     if (e.which === 13 && trimmedText) {
-      alert("adding todo: " + trimmedText);
+        dispatch({ type: "addTodo", payload: trimmedText });
+        setText("");
     }
   };
 

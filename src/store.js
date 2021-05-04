@@ -6,10 +6,16 @@ const initialState = {
     { id: 2, text: "Make my teacher proud" },
   ],
 };
-
 const reducer = (state = initialState, action) => {
-  return state;
-};
+    if (action.type === "addTodo") {
+      return {
+        todos: [...state.todos, { id: 3, text: action.payload }],
+      };
+    }
+    return state;
+  };
+
+
 
 const store = createStore(reducer);
 
